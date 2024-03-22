@@ -43,6 +43,11 @@ const routes: Routes = [
     component: AuthLayoutComponent,
     children: [
       { path: 'login', component: LoginComponent, title: 'Login' },
+      {
+        path: 'setting',
+        loadChildren: () =>
+          import('./setting/setting.module').then((m) => m.SettingModule),
+      },
       { path: 'register', component: RegisterComponent, title: 'Register' },
     ],
   },

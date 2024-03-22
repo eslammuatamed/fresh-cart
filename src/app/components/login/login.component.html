@@ -32,10 +32,15 @@
         </ul>
       </div>
     </div>
-    <button type="submit" class="btn-main ms-auto d-block" [disabled]="loginForm.invalid">
-      <span *ngIf="!loading">login now</span>
-      <i *ngIf="loading" class="fas fa-spinner fa-spin"></i>
-    </button>
+    <div class="d-flex justify-content-between align-items-center">
+      <a routerLink="/setting" class="text-main">
+        Forgot password?
+      </a>
+      <button type="submit" class="btn-main" [disabled]="loginForm.invalid">
+        <span *ngIf="!loading">login now</span>
+        <i *ngIf="loading" class="fas fa-spinner fa-spin"></i>
+      </button>
+    </div>
     <p class="alert alert-danger" *ngIf="msgErr">
       {{msgErr}}
     </p>

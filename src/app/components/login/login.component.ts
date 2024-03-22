@@ -1,11 +1,5 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
@@ -57,9 +51,9 @@ export class LoginComponent implements OnDestroy {
               this._Router.navigate(['/home']);
             }
           },
-          error: (err: HttpErrorResponse) => {
+          error: (err) => {
             this.loading = false;
-            this.msgErr = err.error.message;
+            this.msgErr = err.message;
           },
         });
     }

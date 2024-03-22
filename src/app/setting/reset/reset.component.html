@@ -1,0 +1,43 @@
+<section>
+  <h2>
+    reset now
+  </h2>
+  <form [formGroup]="resetForm">
+    <div class="form-item">
+      <label for="email">Email:</label>
+      <input #inputEmail formControlName="email" id="email" type="email" class="form-control" [value]="email">
+      <div class="alert alert-danger"
+        *ngIf="resetForm.get('email')?.errors && (resetForm.get('email')?.touched || inputEmail.value.length > 0)">
+        <p class="m-0" *ngIf="resetForm.get('email')?.getError('required')">
+          email is required
+        </p>
+        <p class="m-0" *ngIf="resetForm.get('email')?.getError('email')">
+          email is not valid
+        </p>
+      </div>
+    </div>
+    <div class="form-item">
+      <label for="newPassword">newPassword:</label>
+      <input #inputnewPassword formControlName="newPassword" id="newPassword" type="password" class="form-control">
+      <div class="alert alert-danger"
+        *ngIf="resetForm.get('newPassword')?.errors && (resetForm.get('newPassword')?.touched || inputnewPassword.value.length >0)">
+        <p class="m-0" *ngIf="resetForm.get('newPassword')?.getError('required')">
+          newPassword is required
+        </p>
+        <ul class="m-0" *ngIf="resetForm.get('newPassword')?.getError('pattern')">
+          <li>must be</li>
+          <li>* Start with a letter (either uppercase or lowercase).</li>
+          <li>* Be between 6 and 9 characters in total.</li>
+          <li>* Can only contain letters (A-Z or a-z) and numbers (0-9)</li>
+        </ul>
+      </div>
+    </div>
+    <button type="submit" class="btn-main" (click)="handel()" [disabled]="resetForm.invalid">
+      <span *ngIf="!loading">reset password now</span>
+      <i *ngIf="loading" class="fas fa-spinner fa-spin"></i>
+    </button>
+    <p class="alert alert-danger" *ngIf="msgErr">
+      {{msgErr}}
+    </p>
+  </form>
+</section>

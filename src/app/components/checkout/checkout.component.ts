@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CartService } from 'src/app/shared/services/cart.service';
 
@@ -17,9 +17,12 @@ export class CheckoutComponent implements OnInit {
   ) {}
   cartId: string = '';
   checkout: FormGroup = this._FormBuilder.group({
-    details: [''],
-    phone: [''],
-    city: [''],
+    details: ['', [Validators.required]],
+    phone: [
+      '',
+      [Validators.required, Validators.pattern(/^01[0125][0-9]{8}$/)],
+    ],
+    city: ['', [Validators.required]],
   });
 
   ngOnInit(): void {

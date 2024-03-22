@@ -2,19 +2,40 @@
   <form [formGroup]="checkout" class="d-flex flex-column gap-4">
     <label>
       details:
-      <input type="text" formControlName="details" class="form-control">
+      <input #detailsinput type="text" formControlName="details" class="form-control">
+      <div class="alert alert-danger"
+        *ngIf="checkout.get('details')?.errors && (checkout.get('details')?.touched || detailsinput.value.length > 0)">
+        <p class="m-0" *ngIf="checkout.get('details')?.getError('required')">
+          details is required
+        </p>
+      </div>
     </label>
     <label>
       phone:
-      <input type="tel" formControlName="phone" class="form-control">
+      <input #phoneinput type="tel" formControlName="phone" class="form-control">
+      <div class="alert alert-danger"
+        *ngIf="checkout.get('phone')?.errors && (checkout.get('phone')?.touched || phoneinput.value.length > 0)">
+        <p class="m-0" *ngIf="checkout.get('phone')?.getError('required')">
+          phone is required
+        </p>
+        <p class="m-0" *ngIf="checkout.get('phone')?.getError('pattern')">
+          invalid phone number
+        </p>
+      </div>
     </label>
     <label>
       city:
-      <input type="text" formControlName="city" class="form-control">
+      <input #cityinput type="text" formControlName="city" class="form-control">
+      <div class="alert alert-danger"
+        *ngIf="checkout.get('city')?.errors && (checkout.get('city')?.touched || cityinput.value.length > 0)">
+        <p class="m-0" *ngIf="checkout.get('city')?.getError('required')">
+          city is required
+        </p>
+      </div>
     </label>
     <div class="d-flex justify-content-evenly align-items-center">
-      <button (click)="handelPayment()" class="btn btn-outline-info">payment</button>
-      <button (click)="handelCash()" class="btn btn-outline-info">cash</button>
+      <button (click)="handelPayment()" class="btn btn-outline-info" [disabled]="checkout.invalid">payment</button>
+      <button (click)="handelCash()" class="btn btn-outline-info" [disabled]="checkout.invalid">cash</button>
     </div>
   </form>
 </section>

@@ -33,7 +33,6 @@ import { ToastrModule } from 'ngx-toastr';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AllordersComponent } from './components/allorders/allorders.component';
 import { MyHttpInterceptor } from './my-http.interceptor';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [

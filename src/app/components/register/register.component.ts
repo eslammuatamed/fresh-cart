@@ -68,9 +68,9 @@ export class RegisterComponent implements OnDestroy {
               this._Router.navigate(['/login']);
             }
           },
-          error: (err: HttpErrorResponse) => {
+          error: (err) => {
             this.loading = false;
-            this.msgErr = err.error.message;
+            this.msgErr = err.message;
           },
         });
     }

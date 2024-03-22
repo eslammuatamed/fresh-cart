@@ -58,7 +58,7 @@ a:hover {
 .box {
   right: 5px;
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
-  transform: translateX(110%) translateY(-50%);
+  transform: translateX(150%) translateY(-50%);
   transition: transform 300ms;
 }
 

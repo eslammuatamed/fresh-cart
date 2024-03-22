@@ -75,9 +75,9 @@
         <p class="m-0" *ngIf="registerForm.get('phone')?.getError('required')">
           phone is required
         </p>
-        <ul class="m-0" *ngIf="registerForm.get('phone')?.getError('pattern')">
+        <p class="m-0" *ngIf="registerForm.get('phone')?.getError('pattern')">
           invalid phone number
-        </ul>
+        </p>
       </div>
     </div>
     <button type="submit" class="btn-main ms-auto d-block" [disabled]="registerForm.invalid">

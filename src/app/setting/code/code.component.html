@@ -1,0 +1,27 @@
+<section>
+  <h2>
+    Enter your code
+  </h2>
+  <form [formGroup]="resetForm" (ngSubmit)="handel()">
+    <div class="form-item">
+      <label for="code">code:</label>
+      <input #inputcode formControlName="code" id="code" type="code" class="form-control">
+      <div class="alert alert-danger"
+        *ngIf="resetForm.get('code')?.errors && (resetForm.get('code')?.touched || inputcode.value.length > 0)">
+        <p class="m-0" *ngIf="resetForm.get('code')?.getError('required')">
+          code is required
+        </p>
+        <p class="m-0" *ngIf="resetForm.get('code')?.getError('pattern')">
+          code is not valid
+        </p>
+      </div>
+    </div>
+    <button type="submit" class="btn-main" [disabled]="resetForm.invalid">
+      <span *ngIf="!loading">send email now</span>
+      <i *ngIf="loading" class="fas fa-spinner fa-spin"></i>
+    </button>
+    <p class="alert alert-danger" *ngIf="msgErr">
+      {{msgErr}}
+    </p>
+  </form>
+</section>
