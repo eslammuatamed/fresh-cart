@@ -1,0 +1,26 @@
+<section>
+  <input type="search" class="form-control w-50 mx-auto my-3" placeholder="Search By Name..." [(ngModel)]="searchTerm">
+  <div class="d-flex justify-content-end gap-2 fs-3 mb-3">
+    <label class="px-2 py-1 cursor-pointer border rounded-2" [ngClass]="{'bg-main-light':layout.one}">
+      <i class="fa-solid fa-list"></i>
+      <input name="layout" hidden type="radio" (change)="change1()" [checked]="layout.one">
+    </label>
+    <label class="px-2 py-1 cursor-pointer border rounded-2" [ngClass]="{'bg-main-light':layout.three}">
+      <i class="fa-solid fa-table-cells-large"></i>
+      <input name="layout" hidden type="radio" (change)="change2()" [checked]="layout.three">
+    </label>
+    <label class="px-2 py-1 cursor-pointer border rounded-2" [ngClass]="{'bg-main-light':layout.sex}">
+      <i class="fa-solid fa-table-cells"></i>
+      <input name="layout" hidden type="radio" (change)="change3()" [checked]="layout.sex">
+    </label>
+  </div>
+  <div class="row g-4" [ngClass]="{
+    'row-cols-md-6': layout.sex,
+    'row-cols-md-3': layout.three,
+    'row-cols-md-1': layout.one,
+  }">
+    <div class="col" *ngFor="let product of products | search:searchTerm">
+      <app-product [product]="product" [wishproduct]="wishProductId.includes(product._id)"></app-product>
+    </div>
+  </div>
+</section>

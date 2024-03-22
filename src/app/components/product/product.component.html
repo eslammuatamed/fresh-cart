@@ -1,0 +1,29 @@
+<div class="product p-2 cursor-pointer">
+  <div [routerLink]="['/details',product._id]">
+    <img [src]="product.imageCover" class="praimary w-100" [alt]="product.title">
+    <img [src]="product.images[0]" class="secondary w-100" [alt]="product.title">
+    <h3 class="h6 text-main fw-normal">{{product.category.name}}</h3>
+    <h4 class="h6 fw-medium">{{product.title | termText:0:2}}</h4>
+    <div class="d-flex justify-content-between align-items-center">
+      <span>{{product.price | price:'EGP'}}</span>
+      <div>
+        <span class="rating-color">
+          <i class="fas fa-star"></i>
+        </span>
+        <span>{{product.ratingsAverage}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="box position-absolute top-50 rounded p-1 ">
+    <div>
+      <button (click)="addToCart(product._id)" class="icon border-0 bg-transparent text-light">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </button>
+    </div>
+    <div>
+      <button (click)="addToWishList($event,product._id)" class="icon border-0 bg-transparent text-light">
+        <i class="fa-solid fa-heart" [ngClass]="{'text-red':wishproduct}"></i>
+      </button>
+    </div>
+  </div>
+</div>

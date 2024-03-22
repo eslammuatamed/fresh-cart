@@ -1,0 +1,20 @@
+<section class="bg-main-light rounded-3 p-3 my-2">
+  <div class="d-flex justify-content-between align-items-center mb-2">
+    <h1>All Orders</h1>
+  </div>
+  <div *ngIf="orders.length;else emptyOrders">
+    <div *ngFor="let order of orders; index as i" class="d-flex justify-content-between align-items-center fw-bolder">
+      <div class="d-flex align-items-center gap-2">
+        <p>{{i+1}}</p>
+        <p>Total Price : <span class="text-main">{{orders[i].totalOrderPrice | price:'EGP'}}</span></p>
+      </div>
+      <p>Payment Way : <span class="text-main">{{orders[i].paymentMethodType}}</span></p>
+    </div>
+  </div>
+  <ng-template #emptyOrders>
+    <h2 class="py-3 h1">your orders is empty</h2>
+    <a routerLink="/home" class="btn-main">
+      Go To Shopping
+    </a>
+  </ng-template>
+</section>

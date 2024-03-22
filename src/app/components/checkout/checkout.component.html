@@ -1,0 +1,20 @@
+<section class="bg-main-light p-4 rounded-3 my-3 w-75 mx-auto">
+  <form [formGroup]="checkout" class="d-flex flex-column gap-4">
+    <label>
+      details:
+      <input type="text" formControlName="details" class="form-control">
+    </label>
+    <label>
+      phone:
+      <input type="tel" formControlName="phone" class="form-control">
+    </label>
+    <label>
+      city:
+      <input type="text" formControlName="city" class="form-control">
+    </label>
+    <div class="d-flex justify-content-evenly align-items-center">
+      <button (click)="handelPayment()" class="btn btn-outline-info">payment</button>
+      <button (click)="handelCash()" class="btn btn-outline-info">cash</button>
+    </div>
+  </form>
+</section>
