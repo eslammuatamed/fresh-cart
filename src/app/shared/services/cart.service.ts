@@ -46,8 +46,14 @@ export class CartService {
     );
   }
   checkoutPayment(id: string, checkout: Object): Observable<any> {
+    if (window.location.host == 'localhost:4200') {
+      return this._HttpClient.post(
+        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=http://localhost:4200/#`,
+        { shippingAddress: checkout }
+      );
+    }
     return this._HttpClient.post(
-      `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=http://localhost:4200`,
+      `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url= https://eslammuatamed.github.io/fresh-cart/#`,
       { shippingAddress: checkout }
     );
   }

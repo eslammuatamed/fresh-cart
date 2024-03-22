@@ -40,7 +40,6 @@ export class CheckoutComponent implements OnInit {
       next: (data) => {
         if (data.status == 'success') {
           console.log('success');
-
           this._Router.navigate(['/allorders']);
         }
       },

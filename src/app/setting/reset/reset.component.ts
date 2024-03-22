@@ -23,7 +23,6 @@ export class ResetComponent implements OnDestroy, OnInit {
   email: string = '';
   ngOnInit(): void {
     this.email = this._ResetPasswordService.email;
-    console.log(this._ResetPasswordService.email);
   }
 
   resetSubscription: Subscription = new Subscription();
@@ -36,7 +35,7 @@ export class ResetComponent implements OnDestroy, OnInit {
   });
 
   handel(): void {
-    console.log(this.resetForm.value);
+    this.loading = true;
 
     this.resetSubscription = this._ResetPasswordService
       .resetPassword(this.resetForm.value)

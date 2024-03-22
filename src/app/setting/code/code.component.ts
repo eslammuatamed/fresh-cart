@@ -26,6 +26,7 @@ export class CodeComponent implements OnDestroy {
   });
 
   handel(): void {
+    this.loading = true;
     const code = this.resetForm.get('code');
     this.resetSubscription = this._ResetPasswordService
       .verifyCode(code?.value)

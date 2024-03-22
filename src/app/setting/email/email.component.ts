@@ -26,8 +26,8 @@ export class EmailComponent implements OnDestroy {
   });
 
   handel(): void {
+    this.loading = true;
     const email = this.resetForm.get('email');
-    console.log(email);
 
     this.resetSubscription = this._ResetPasswordService
       .sendEmail(email?.value)

@@ -1,7 +1,7 @@
 <section class="bg-main-light rounded-3 p-3 my-2">
   <div class="d-flex justify-content-between align-items-center mb-2">
     <h1>Shop Cart</h1>
-    <button [routerLink]="['/checkout', cartDetails._id]" *ngIf="cartDetails.products.length"
+    <button [routerLink]="['/checkout', cartDetails._id]" *ngIf="cartDetails.products?.length"
       class="btn btn-primary btn-lg">check
       out</button>
   </div>
