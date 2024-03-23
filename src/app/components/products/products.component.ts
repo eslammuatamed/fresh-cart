@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { product } from 'src/app/shared/interfaces/product';
 import { WishListService } from 'src/app/shared/services/wish-list.service';
 
@@ -17,8 +17,17 @@ export class ProductsComponent {
     three: false,
     sex: true,
   };
-
+  show: boolean = true;
+  @HostListener('window:resize', ['$event'])
+  getScreenSize() {
+    if (window.innerWidth < 992) {
+      this.show = false;
+    } else {
+      this.show = true;
+    }
+  }
   ngOnInit(): void {
+    this.getScreenSize();
     this.wishProduct();
   }
 
