@@ -52,6 +52,7 @@ export class WishListComponent implements OnInit, OnDestroy {
     this.addToCartSubscription = this._cartService.addToCart(id).subscribe({
       next: (res) => {
         this._ToastrService.success(res.message);
+        this._cartService.cartCount.next(res.numOfCartItems);
         this.deleteItem(id);
       },
       error: (err) => {

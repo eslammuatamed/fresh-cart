@@ -1,1 +1,24 @@
-<p>categories works!</p>
+<section>
+  <div class="row g-4 row-cols-lg-3 row-cols-md-2 row-cols-1 mb-3">
+    <div class="col" *ngFor="let category of categories" (click)="getSubCate(category._id,category.name)">
+      <div class="product" [id]="category._id">
+        <img [src]="category.image" class="w-100" height="300" [alt]="category.slug">
+        <p class="h3 text-center text-main">
+          {{ category.name }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="subCategoryName">
+    <h2 class="text-main text-center"> {{subCategoryName +' subcategories'}} </h2>
+    <div class="row g-4 row-cols-lg-3 row-cols-md-2 row-cols-1">
+      <div class="col" *ngFor="let subCategory of subCategories">
+        <div class="product" [id]="subCategory._id">
+          <p class="h3 text-center py-2">
+            {{ subCategory.name }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

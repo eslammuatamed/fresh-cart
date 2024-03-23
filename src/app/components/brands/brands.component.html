@@ -1,1 +1,37 @@
-<p>brands works!</p>
+<section>
+  <div class="row g-4 row-cols-lg-4 row-cols-md-2 row-cols-1 mb-3">
+    <div class="col" *ngFor="let onBrand of brands">
+      <div class="product" [id]="onBrand._id" data-bs-toggle="modal" data-bs-target="#exampleModal"
+        (click)="selectBrand(onBrand._id)">
+        <img [src]="onBrand.image" class="w-100" height="200" [alt]="onBrand.slug">
+        <p class="h3 text-center text-main">
+          {{ onBrand.name }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel"> {{specificBrand.name}} </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row row-cols-md-2 row-cols-1 align-items-center justify-content-between">
+            <div class="col">
+              <h3 class="h2 text-main"> {{specificBrand.name}} </h3>
+              <p> {{specificBrand.slug}} </p>
+            </div>
+            <div class="col">
+              <img [src]="specificBrand.image" class="w-100" height="200" [alt]="specificBrand.slug">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -11,6 +11,9 @@ export class CartService {
     private _HttpClient: HttpClient,
     private _AuthService: AuthService
   ) {}
+
+  cartCount: BehaviorSubject<number> = new BehaviorSubject(0);
+
   addToCart(id: string): Observable<any> {
     return this._HttpClient.post(
       'https://ecommerce.routemisr.com/api/v1/cart',
@@ -53,7 +56,7 @@ export class CartService {
       );
     }
     return this._HttpClient.post(
-      `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url= https://eslammuatamed.github.io/fresh-cart/#`,
+      `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${id}?url=https://eslammuatamed.github.io/fresh-cart/#`,
       { shippingAddress: checkout }
     );
   }

@@ -33,6 +33,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AllordersComponent } from './components/allorders/allorders.component';
 import { MyHttpInterceptor } from './my-http.interceptor';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { LoadingInterceptor } from './loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -70,9 +72,11 @@ import { MyHttpInterceptor } from './my-http.interceptor';
     CarouselModule,
     FormsModule,
     ToastrModule.forRoot(),
+    NgxSpinnerModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: MyHttpInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

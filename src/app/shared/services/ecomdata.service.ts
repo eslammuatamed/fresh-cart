@@ -23,4 +23,19 @@ export class EcomdataService {
       'https://ecommerce.routemisr.com/api/v1/categories'
     );
   }
+  getSubCategories(id: string): Observable<any> {
+    return this._HttpClient.get(
+      `https://ecommerce.routemisr.com/api/v1/categories/${id}/subcategories`
+    );
+  }
+  getBrands(): Observable<any> {
+    return this._HttpClient.get(
+      'https://ecommerce.routemisr.com/api/v1/brands'
+    );
+  }
+  getBrand(id: string): Observable<any> {
+    return this._HttpClient.get(
+      `https://ecommerce.routemisr.com/api/v1/brands/${id}`
+    );
+  }
 }

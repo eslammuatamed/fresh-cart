@@ -24,6 +24,7 @@ export class ProductComponent implements OnDestroy {
     this.addToCartSubscription = this._CartService.addToCart(id).subscribe({
       next: (res) => {
         this._ToastrService.success(res.message);
+        this._CartService.cartCount.next(res.numOfCartItems);
       },
       error: (err) => {
         this._ToastrService.error(err.message);

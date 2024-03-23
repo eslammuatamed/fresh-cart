@@ -29,6 +29,8 @@ export class CartComponent implements OnInit, OnDestroy {
   deleteItem(id: string): void {
     this._cartService.deleteItem(id).subscribe({
       next: (data) => {
+        this._cartService.cartCount.next(data.numOfCartItems);
+
         this.cartDetails = data.data;
       },
       error: (err) => {
